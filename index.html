@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cyber LLM Project.. Coming Soon!</title>
+    <title>Cyber LLM Project - Coming Soon</title>
     <style>
         body {
             background-color: #f4f4f4;
@@ -23,9 +23,10 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .logo {
-            font-size: 48px;
+        .big-title {
+            font-size: 64px;
             color: #333;
+            margin-bottom: 20px;
         }
 
         .message {
@@ -43,9 +44,32 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">My Awesome Project</div>
+        <div class="big-title">Cyber LLM Project</div>
         <div class="message">Coming Soon!</div>
-        <div class="countdown">00 : 00 : 00</div>
+        <div class="countdown" id="countdown">00 : 00 : 00</div>
     </div>
+
+    <script>
+        function updateCountdown() {
+            const launchDate = new Date('2024-01-01T00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance <= 0) {
+                document.getElementById('countdown').innerHTML = 'Launched!';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+        }
+
+        updateCountdown();  // Update the countdown immediately
+        setInterval(updateCountdown, 1000);  // Update every second
+    </script>
 </body>
 </html>
